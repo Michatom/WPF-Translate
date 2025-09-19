@@ -216,9 +216,9 @@ namespace de.LandauSoftware.WPFTranslate.IO
         private static string TryGetLangKeyViaFilename(ResourceDictionaryFile file)
         {
             string filename = Path.GetFileName(file.FileName);
-            Match match = Regex.Match(filename, @"(\w{2}-\w{2})");
+			Match match = Regex.Match(filename, @"([a-zA-Z]{2,3}-[a-zA-Z]{2,3})(?=\.xaml$)", RegexOptions.IgnoreCase);
 
-            return match.Success ? match.Groups[1].Value : null;
+			return match.Success ? match.Groups[1].Value : null;
         }
 
         private string TryGetLangKeyViaContent(ResourceDictionaryFile file)

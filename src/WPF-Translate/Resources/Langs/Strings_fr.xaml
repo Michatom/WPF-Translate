@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <sys:String x:Key="addKeyCtrlN">Ajouter une clé (Ctrl + N)</sys:String>
+  <sys:String x:Key="addLanguage">Ajouter la langue</sys:String>
+  <sys:String x:Key="cancel">Annuler</sys:String>
+  <sys:String x:Key="cancelOnError">Annuler l'erreur</sys:String>
+  <sys:String x:Key="change">Changement</sys:String>
+  <sys:String x:Key="clearContent">Contenu clair</sys:String>
+  <sys:String x:Key="close">Fermer</sys:String>
+  <sys:String x:Key="createLanguage">Créer une langue</sys:String>
+  <sys:String x:Key="error">Erreur</sys:String>
+  <sys:String x:Key="errorCanNotAddLanguage">Impossible d'ajouter la langue ! Peut-être existe-t-elle déjà ?</sys:String>
+  <sys:String x:Key="errorCanNotSave" xml:space="preserve">Quelque chose s'est mal passé
+
+{0}</sys:String>
+  <sys:String x:Key="errorLangExists">Impossible d'ajouter la langue « {0} » au fichier « {1} ». Elle existe déjà. Veuillez saisir une autre clé de langue (par exemple, en-US) :</sys:String>
+  <sys:String x:Key="errorNoLangKey">Aucune clé de langue pour le fichier « {0} ». Saisissez la clé de langue (par exemple, en-US) :</sys:String>
+  <sys:String x:Key="file">Déposer</sys:String>
+  <sys:String x:Key="fileAlreadyExists">Le fichier existe déjà. Veuillez choisir un autre chemin.</sys:String>
+  <sys:String x:Key="fileColon">Déposer:</sys:String>
+  <sys:String x:Key="keysCtrlF">Ctrl + F</sys:String>
+  <sys:String x:Key="keysCtrlN">Ctrl + N</sys:String>
+  <sys:String x:Key="keysCtrlO">Ctrl + O</sys:String>
+  <sys:String x:Key="keysCtrlS">Ctrl + S</sys:String>
+  <sys:String x:Key="language">Langue</sys:String>
+  <sys:String x:Key="languageKey">fr-fr</sys:String>
+  <sys:String x:Key="languageKeyColon">Clé de langue:</sys:String>
+  <sys:String x:Key="new">Nouveau</sys:String>
+  <sys:String x:Key="no">Non</sys:String>
+  <sys:String x:Key="ok">OK</sys:String>
+  <sys:String x:Key="open">Ouvrir</sys:String>
+  <sys:String x:Key="pleaseWait">S'il vous plaît, attendez</sys:String>
+  <sys:String x:Key="readerColon">Reader:</sys:String>
+  <sys:String x:Key="remove">Retirer</sys:String>
+  <sys:String x:Key="removeLanguage">Supprimer la langue</sys:String>
+  <sys:String x:Key="reset">Réinitialiser</sys:String>
+  <sys:String x:Key="save">Sauvegarder</sys:String>
+  <sys:String x:Key="search">Recherche</sys:String>
+  <sys:String x:Key="searchColon">Recherche:</sys:String>
+  <sys:String x:Key="searchKeys">Clés de recherche</sys:String>
+  <sys:String x:Key="searchResults">Résultats de la recherche</sys:String>
+  <sys:String x:Key="searchValues">Valeurs de recherche</sys:String>
+  <sys:String x:Key="skipAlreadyTranslatetValues">Sauter déjà traduit</sys:String>
+  <sys:String x:Key="start">Commencer</sys:String>
+  <sys:String x:Key="stop">Arrêt</sys:String>
+  <sys:String x:Key="translateAll">Traduire tous</sys:String>
+  <sys:String x:Key="translateLanguage">Traduire</sys:String>
+  <sys:String x:Key="translateOne">Traduire un</sys:String>
+  <sys:String x:Key="translator">Traducteur</sys:String>
+  <sys:String x:Key="warningClear" xml:space="preserve">Toutes les entrées seront supprimées !
+
+Envie de continuer ?</sys:String>
+  <sys:String x:Key="warningRemoveLanguage" xml:space="preserve">Toutes les modifications non enregistrées seront perdues !
+
+Envie de continuer ?</sys:String>
+  <sys:String x:Key="warningRemoveSelected">Voulez-vous vraiment supprimer cette entrée ?</sys:String>
+  <sys:String x:Key="wpfTranslate">WPF-Translate</sys:String>
+    <sys:String x:Key="yes">Oui</sys:String>
+    <sys:String x:Key="closeConfirmation">Confirmation de clôture</sys:String>
+    <sys:String x:Key="closeConfirmationText">Voulez-vous vraiment quitter l'application ?
+Avant de quitter, assurez-vous que toutes les modifications souhaitées ont été enregistrées.</sys:String>
+    <sys:String x:Key="licenses">Licences</sys:String>
+</ResourceDictionary>

@@ -12,7 +12,7 @@
     Dialog:DialogParticipation.Register="{Binding}"
     ResizeMode="NoResize"
     SizeToContent="Height"
-    mc:Ignorable="d" Icon="/WPF-Translate;component/appicon.ico">
+    mc:Ignorable="d" Icon="/WPF-Translate;component/appicon.ico" WindowStartupLocation="CenterOwner">
     <Controls:MetroWindow.DataContext>
         <local:TranslateWindowViewModel x:Name="vModel" />
     </Controls:MetroWindow.DataContext>
@@ -80,15 +80,21 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Command="{Binding StartCommand, Mode=OneWay}" Content="{DynamicResource start}" />
+            <Button Command="{Binding StartCommand, Mode=OneWay}" Content="{DynamicResource translateOne}" />
             <Button
                 Grid.Column="2"
+                Command="{Binding TranslateAllCommand, Mode=OneWay}"
+                Content="{DynamicResource translateAll}" />
+            <Button
+                Grid.Column="4"
                 Command="{Binding StopCommand,
                                   Mode=OneWay}"
                 Content="{DynamicResource stop}" />
             <Button
-                Grid.Column="4"
+                Grid.Column="6"
                 Command="{Binding RestCommand,
                                   Mode=OneWay}"
                 Content="{DynamicResource reset}" />

@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <sys:String x:Key="addKeyCtrlN">Dodaj klucz (Ctrl+N)</sys:String>
+  <sys:String x:Key="addLanguage">Dodaj język</sys:String>
+  <sys:String x:Key="cancel">Anuluj</sys:String>
+  <sys:String x:Key="cancelOnError">Anuluj błąd</sys:String>
+  <sys:String x:Key="change">Zmień</sys:String>
+  <sys:String x:Key="clearContent">Wyczyść</sys:String>
+  <sys:String x:Key="close">Zamknij</sys:String>
+  <sys:String x:Key="createLanguage">Utwórz język</sys:String>
+  <sys:String x:Key="error">Błąd</sys:String>
+  <sys:String x:Key="errorCanNotAddLanguage">Nie można dodać języka! Może już istnieje?</sys:String>
+  <sys:String x:Key="errorCanNotSave" xml:space="preserve">Coś poszło nie tak
+
+{0}</sys:String>
+  <sys:String x:Key="errorLangExists">Nie można dodać języka „{0}” dla pliku „{1}”. On już istnieje. Wprowadź inny klucz języka (np. en-US):</sys:String>
+  <sys:String x:Key="errorNoLangKey">Brak klucza języka dla pliku „{0}”. Wprowadź klucz językowy (np. en-US):</sys:String>
+  <sys:String x:Key="file">Plik</sys:String>
+  <sys:String x:Key="fileAlreadyExists">Plik już istnieje. Wybierz inną ścieżkę.</sys:String>
+  <sys:String x:Key="fileColon">Plik:</sys:String>
+  <sys:String x:Key="keysCtrlF">Ctrl+F</sys:String>
+  <sys:String x:Key="keysCtrlN">Ctrl+N</sys:String>
+  <sys:String x:Key="keysCtrlO">Ctrl+O</sys:String>
+  <sys:String x:Key="keysCtrlS">Ctrl+S</sys:String>
+  <sys:String x:Key="language">Język</sys:String>
+  <sys:String x:Key="languageKey">pl-pl</sys:String>
+  <sys:String x:Key="languageKeyColon">Klucz języka:</sys:String>
+  <sys:String x:Key="new">Nowy</sys:String>
+  <sys:String x:Key="no">Nie</sys:String>
+  <sys:String x:Key="ok">OK</sys:String>
+  <sys:String x:Key="open">Otwórz</sys:String>
+  <sys:String x:Key="pleaseWait">Proszę czekać</sys:String>
+  <sys:String x:Key="readerColon">Reader:</sys:String>
+  <sys:String x:Key="remove">Usuń</sys:String>
+  <sys:String x:Key="removeLanguage">Usuń język</sys:String>
+  <sys:String x:Key="reset">Zresetuj</sys:String>
+  <sys:String x:Key="save">Zapisz</sys:String>
+  <sys:String x:Key="search">Szukaj</sys:String>
+  <sys:String x:Key="searchColon">Szukaj:</sys:String>
+  <sys:String x:Key="searchKeys">Wyszukaj klucze</sys:String>
+  <sys:String x:Key="searchResults">Wyniki wyszukiwania</sys:String>
+  <sys:String x:Key="searchValues">Wyszukaj wartości</sys:String>
+  <sys:String x:Key="skipAlreadyTranslatetValues">Pomiń już przetłumaczone</sys:String>
+  <sys:String x:Key="start">Start</sys:String>
+  <sys:String x:Key="stop">Stop</sys:String>
+  <sys:String x:Key="translateAll">Tłumacz wszystkie</sys:String>
+  <sys:String x:Key="translateLanguage">Przetłumacz</sys:String>
+  <sys:String x:Key="translateOne">Przetłumacz wybrany</sys:String>
+  <sys:String x:Key="translator">Tłumacz</sys:String>
+  <sys:String x:Key="warningClear" xml:space="preserve">Wszystkie wpisy zostaną usunięte!
+
+Chcesz kontynuować?</sys:String>
+  <sys:String x:Key="warningRemoveLanguage" xml:space="preserve">Wszystkie niezapisane zmiany zostaną utracone!
+
+Chcesz kontynuować?</sys:String>
+  <sys:String x:Key="warningRemoveSelected">Czy naprawdę chcesz usunąć ten wpis?</sys:String>
+  <sys:String x:Key="wpfTranslate">WPF-Translate</sys:String>
+    <sys:String x:Key="yes">Tak</sys:String>
+    <sys:String x:Key="closeConfirmation">Potwierdzenie zamykania</sys:String>
+    <sys:String x:Key="closeConfirmationText">Czy na pewno chcesz zamknąć aplikację?
+        Przed wyjściem upewnij się, że wszystkie pożądane zmiany zostały zapisane.</sys:String>
+    <sys:String x:Key="licenses">Licencje</sys:String>
+</ResourceDictionary>

@@ -1,6 +1,9 @@
 ﻿using de.LandauSoftware.WPFTranslate.IO;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,8 +20,7 @@ namespace de.LandauSoftware.WPFTranslate
         public LanguageSetupWindow()
         {
             InitializeComponent();
-
-            readerComboBox.ItemsSource = Readers.FileReaders;
+			readerComboBox.ItemsSource = Readers.FileReaders;
             readerComboBox.SelectedIndex = Readers.FileReaders.Count == 0 ? -1 : 0;
         }
 
@@ -43,12 +45,20 @@ namespace de.LandauSoftware.WPFTranslate
         {
             SaveFileDialog sfd = new SaveFileDialog
             {
-                Filter = "File|*." + Reader.FileExtension
+                Filter = "File|*." + Reader.FileExtension,
+                OverwritePrompt = false
             };
 
-            if (sfd.ShowDialog() == true)
-                filePath.Text = sfd.FileName;
-        }
+			if (sfd.ShowDialog() == true)
+				if (File.Exists(sfd.FileName))
+				{
+					this.ShowMessageAsync(App.FindString("error"), App.FindString("fileAlreadyExists"));
+				}
+				else
+				{
+					filePath.Text = sfd.FileName;
+				}
+		}
 
         private void FilePath_TextChanged(object sender, TextChangedEventArgs e)
         {

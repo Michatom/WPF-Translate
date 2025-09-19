@@ -23,29 +23,30 @@ namespace de.LandauSoftware.WPFTranslate
         private RelayICommand _StartCommand;
         private RelayICommand _StopCommand;
         private List<Language> _TargetLanguages;
-        private bool _TranslateJustEmpty = false;
+        private bool _TranslateJustEmpty = true;
+		private RelayICommand _TranslateAllCommand;
 
-        /// <summary>
-        /// Cancellation Token für das Abbrechen einer Operation
-        /// </summary>
-        public CancellationTokenSource CancellationTokenSource
-        {
-            get
-            {
-                return _CancellationTokenSource;
-            }
-            set
-            {
-                _CancellationTokenSource = value;
+		/// <summary>
+		/// Cancellation Token für das Abbrechen einer Operation
+		/// </summary>
+		public CancellationTokenSource CancellationTokenSource
+		{
+			get
+			{
+				return _CancellationTokenSource;
+			}
+			set
+			{
+				_CancellationTokenSource = value;
+				RaisePropertyChanged(nameof(CancellationTokenSource));
+				System.Windows.Input.CommandManager.InvalidateRequerySuggested();
+			}
+		}
 
-                RaisePropertyChanged(nameof(CancellationTokenSource));
-            }
-        }
-
-        /// <summary>
-        /// Legt fest, ob die Anwendung bei einem Fehler abbrechen soll
-        /// </summary>
-        public bool CancelOnException
+		/// <summary>
+		/// Legt fest, ob die Anwendung bei einem Fehler abbrechen soll
+		/// </summary>
+		public bool CancelOnException
         {
             get
             {
@@ -226,18 +227,91 @@ namespace de.LandauSoftware.WPFTranslate
                                 }
                             }
 
-                            CancellationTokenSource = null;
-                        }, CancellationTokenSource.Token);
+							System.Windows.Application.Current.Dispatcher.Invoke(() =>
+							{
+								CancellationTokenSource = null;
+								RaisePropertyChanged(nameof(CancellationTokenSource));
+							});
+						}, CancellationTokenSource.Token);
                     });
 
                 return _StartCommand;
             }
         }
 
-        /// <summary>
-        /// Stopt das Übersetzten
-        /// </summary>
-        public ICommand StopCommand
+		public ICommand TranslateAllCommand
+		{
+			get
+			{
+				if (_TranslateAllCommand == null)
+					_TranslateAllCommand = new RelayICommand(
+						p => CancellationTokenSource == null && SelectedSourceLanguage != null,
+						p => TranslateAllToAllTargetLanguages());
+				return _TranslateAllCommand;
+			}
+		}
+
+		public void TranslateAllToAllTargetLanguages()
+		{
+			if (SelectedSourceLanguage == null || Languages == null)
+				return;
+
+			CancellationTokenSource = new CancellationTokenSource();
+			CancellationToken cancelToken = CancellationTokenSource.Token;
+
+			Task.Run(() =>
+			{
+				foreach (var key in KeyList)
+				{
+					if (cancelToken.IsCancellationRequested)
+						break;
+
+					LangValue sourceValue = key.FindValueByLang(SelectedSourceLanguage);
+					if (sourceValue == null || string.IsNullOrWhiteSpace(sourceValue.Value))
+						continue;
+
+					foreach (var targetLang in Languages)
+					{
+						if (targetLang.Equals(SelectedSourceLanguage))
+							continue;
+
+						LangValue targetValue = key.FindValueByLang(targetLang);
+						if (TranslateJustEmpty && targetValue != null && !string.IsNullOrWhiteSpace(targetValue.Value))
+							continue;
+
+						try
+						{
+							string resp = Translate.StringTranslate(sourceValue.Value, SelectedSourceLanguage.LangKey, targetLang.LangKey);
+							if (targetValue != null)
+								targetValue.Value = resp;
+							else
+								key.SetValue(targetLang, resp);
+						}
+						catch (Exception ex)
+						{
+							if (CancelOnException)
+							{
+								Task.Run(async () =>
+								{
+									await DialogCoordinator.ShowMessageAsync(this, App.FindString("error"), ex.Message);
+								});
+								return;
+							}
+						}
+					}
+				}
+				System.Windows.Application.Current.Dispatcher.Invoke(() =>
+				{
+					CancellationTokenSource = null;
+					RaisePropertyChanged(nameof(CancellationTokenSource));
+				});
+			}, CancellationTokenSource.Token);
+		}
+
+		/// <summary>
+		/// Stopt das Übersetzten
+		/// </summary>
+		public ICommand StopCommand
         {
             get
             {

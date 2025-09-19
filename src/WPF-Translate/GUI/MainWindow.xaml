@@ -59,7 +59,7 @@
                     Command="{Binding SaveFileCommand, Mode=OneWay}"
                     Header="{DynamicResource save}"
                     InputGestureText="{DynamicResource keysCtrlS}" />
-                <MenuItem Command="{Binding AddLanguageCommand, Mode=OneWay}" Header="{DynamicResource addLanguage}" />
+                <MenuItem Command="{Binding AddLanguageCommand, Mode=OneWay}" Header="{DynamicResource createLanguage}" />
                 <Separator />
                 <MenuItem
                     Command="{Binding SearchCommand, Mode=OneWay}"
@@ -67,10 +67,12 @@
                     InputGestureText="{DynamicResource keysCtrlF}" />
                 <MenuItem Command="{Binding ClearCommand, Mode=OneWay}" Header="{DynamicResource clearContent}" />
                 <Separator />
+                <MenuItem Header="Licencje" Click="ShowLicenses_Click"/>
+                <Separator />
                 <MenuItem Click="Close_Click" Header="{DynamicResource close}" />
             </MenuItem>
             <MenuItem Header="{DynamicResource language}">
-                <MenuItem Command="{Binding AddLanguageCommand, Mode=OneWay}" Header="{DynamicResource addLanguage}" />
+                <MenuItem Command="{Binding AddLanguageCommand, Mode=OneWay}" Header="{DynamicResource createLanguage}" />
                 <MenuItem Command="{Binding RemoveLanguageCommand, Mode=OneWay}" Header="{DynamicResource removeLanguage}" />
                 <MenuItem Command="{Binding TranslateLanguageCommand, Mode=OneWay}" Header="{DynamicResource translateLanguage}" />
             </MenuItem>

@@ -1,53 +1,63 @@
-﻿<ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:local="clr-namespace:de.LandauSoftware.WPFTranslate.Resources.Langs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+﻿<ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <sys:String x:Key="addKeyCtrlN">Add Key (Ctrl+N)</sys:String>
+  <sys:String x:Key="addLanguage">Add language</sys:String>
   <sys:String x:Key="cancel">Cancel</sys:String>
+  <sys:String x:Key="cancelOnError">Cancel on error</sys:String>
   <sys:String x:Key="change">Change</sys:String>
-  <sys:String x:Key="createLanguage">Create language</sys:String>
-  <sys:String x:Key="fileColon">File:</sys:String>
-  <sys:String x:Key="languageKey">en-us</sys:String>
-  <sys:String x:Key="languageKeyColon">Language key:</sys:String>
-  <sys:String x:Key="ok">OK</sys:String>
-  <sys:String x:Key="readerColon">Reader:</sys:String>
-  <sys:String x:Key="file">File</sys:String>
-  <sys:String x:Key="open">Open</sys:String>
-  <sys:String x:Key="keysCtrlO">Ctrl+O</sys:String>
-  <sys:String x:Key="save">Save</sys:String>
-  <sys:String x:Key="keysCtrlS">Ctrl+S</sys:String>
-  <sys:String x:Key="new">New</sys:String>
-  <sys:String x:Key="keysCtrlN">Ctrl+N</sys:String>
-  <sys:String x:Key="search">Search</sys:String>
-  <sys:String x:Key="keysCtrlF">Ctrö+F</sys:String>
   <sys:String x:Key="clearContent">Clear content</sys:String>
   <sys:String x:Key="close">Close</sys:String>
-  <sys:String x:Key="language">Language</sys:String>
-  <sys:String x:Key="addLanguage">Add language</sys:String>
-  <sys:String x:Key="removeLanguage">Remove Language</sys:String>
-  <sys:String x:Key="translateLanguage">Translate language</sys:String>
-  <sys:String x:Key="addKeyCtrlN">Add Key (Ctrl+N)</sys:String>
-  <sys:String x:Key="wpfTranslate">WPF-Translate</sys:String>
-  <sys:String x:Key="warningRemoveLanguage" xml:space="preserve">All unsaved changes wil be los!
-
-Do you want to continue?</sys:String>
-  <sys:String x:Key="yes">Yes</sys:String>
-  <sys:String x:Key="no">No</sys:String>
-  <sys:String x:Key="searchResults">Searchresults</sys:String>
-  <sys:String x:Key="searchKeys">Search keys</sys:String>
-  <sys:String x:Key="searchValues">Search Values</sys:String>
-  <sys:String x:Key="searchColon">Search:</sys:String>
-  <sys:String x:Key="translator">Translator</sys:String>
-  <sys:String x:Key="cancelOnError">Cancel on error</sys:String>
-  <sys:String x:Key="skipAlreadyTranslatetValues">Skip already translatet</sys:String>
-  <sys:String x:Key="start">Start</sys:String>
-  <sys:String x:Key="stop">Stop</sys:String>
-  <sys:String x:Key="reset">Reset</sys:String>
-  <sys:String x:Key="remove">Renove</sys:String>
-  <sys:String x:Key="warningClear" xml:space="preserve">All entrys will be cleared!
-
-Do you want to continue?</sys:String>
+  <sys:String x:Key="createLanguage">Create language</sys:String>
   <sys:String x:Key="error">Error</sys:String>
-  <sys:String x:Key="warningRemoveSelected">Do you realy want to delte this entry?</sys:String>
+  <sys:String x:Key="errorCanNotAddLanguage">Can not add Language! Maybe it aleady exists?</sys:String>
   <sys:String x:Key="errorCanNotSave" xml:space="preserve">Something went wrong
 
 {0}</sys:String>
+  <sys:String x:Key="errorLangExists">Cannot add language "{0}" for file "{1}". It already exists. Please enter a different language key (e.g. en-US):</sys:String>
+  <sys:String x:Key="errorNoLangKey">No language key provided for file "{0}". Please enter a language key (e.g. en-US):</sys:String>
+  <sys:String x:Key="file">File</sys:String>
+  <sys:String x:Key="fileAlreadyExists">File already exists. Please pick other path.</sys:String>
+  <sys:String x:Key="fileColon">File:</sys:String>
+  <sys:String x:Key="keysCtrlF">Ctrl+F</sys:String>
+  <sys:String x:Key="keysCtrlN">Ctrl+N</sys:String>
+  <sys:String x:Key="keysCtrlO">Ctrl+O</sys:String>
+  <sys:String x:Key="keysCtrlS">Ctrl+S</sys:String>
+  <sys:String x:Key="language">Language</sys:String>
+  <sys:String x:Key="languageKey">en-us</sys:String>
+  <sys:String x:Key="languageKeyColon">Language key:</sys:String>
+  <sys:String x:Key="new">New</sys:String>
+  <sys:String x:Key="no">No</sys:String>
+  <sys:String x:Key="ok">OK</sys:String>
+  <sys:String x:Key="open">Open</sys:String>
   <sys:String x:Key="pleaseWait">Please wait</sys:String>
-  <sys:String x:Key="errorCanNotAddLanguage">Can not add Language! Maybe it aleady exists?</sys:String>
+  <sys:String x:Key="readerColon">Reader:</sys:String>
+  <sys:String x:Key="remove">Remove</sys:String>
+  <sys:String x:Key="removeLanguage">Remove Language</sys:String>
+  <sys:String x:Key="reset">Reset</sys:String>
+  <sys:String x:Key="save">Save</sys:String>
+  <sys:String x:Key="search">Search</sys:String>
+  <sys:String x:Key="searchColon">Search:</sys:String>
+  <sys:String x:Key="searchKeys">Search keys</sys:String>
+  <sys:String x:Key="searchResults">Search results</sys:String>
+  <sys:String x:Key="searchValues">Search values</sys:String>
+  <sys:String x:Key="skipAlreadyTranslatetValues">Skip already translated</sys:String>
+  <sys:String x:Key="start">Start</sys:String>
+  <sys:String x:Key="stop">Stop</sys:String>
+  <sys:String x:Key="translateAll">Translate all</sys:String>
+  <sys:String x:Key="translateLanguage">Translate</sys:String>
+  <sys:String x:Key="translateOne">Translate one</sys:String>
+  <sys:String x:Key="translator">Translator</sys:String>
+  <sys:String x:Key="warningClear" xml:space="preserve">All entries will be cleared!
+
+Do you want to continue?</sys:String>
+  <sys:String x:Key="warningRemoveLanguage" xml:space="preserve">All unsaved changes wil be lost!
+
+Do you want to continue?</sys:String>
+  <sys:String x:Key="warningRemoveSelected">Do you realy want to delete this entry?</sys:String>
+  <sys:String x:Key="wpfTranslate">WPF-Translate</sys:String>
+    <sys:String x:Key="yes">Yes</sys:String>
+    <sys:String x:Key="closeConfirmation">Closing confirmation</sys:String>
+    <sys:String x:Key="closeConfirmationText">Are you sure you want to exit the app?
+        Make sure all desired changes have been saved before you leave.</sys:String>
+  <sys:String x:Key="licenses">Licenses</sys:String>
+    
 </ResourceDictionary>

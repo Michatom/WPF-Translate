@@ -168,7 +168,8 @@ namespace de.LandauSoftware.WPFTranslate
                            OpenFileDialog ofd = new OpenFileDialog
                            {
                                Multiselect = true,
-                               Filter = Readers.GetFileDialogFilter()
+                               Filter = Readers.GetFileDialogFilter(),
+                               CheckFileExists = false
                            };
 
                            if (ofd.ShowDialog() != true)
@@ -362,48 +363,68 @@ namespace de.LandauSoftware.WPFTranslate
             }
         }
 
-        /// <summary>
-        /// Fügt ein Wörterbuch in die Sprachdaten hinzu
-        /// </summary>
-        /// <param name="rdf">ResourceDictionaryFile</param>
-        /// <param name="langID">Sprach Key</param>
-        /// <returns></returns>
-        private async Task AddResourceDictionaryFileToLangData(ResourceDictionaryFile rdf, string langID)
-        {
-            while (langID == null || LangData.ContainsLanguage(langID))
-            {
-                langID = await DialogCoordinator.ShowInputAsync(this, App.FindString("error"), App.FindString("errorCanNotAddLanguage"));
+		/// <summary>
+		/// Fügt ein Wörterbuch in die Sprachdaten hinzu
+		/// </summary>
+		/// <param name="rdf">ResourceDictionaryFile</param>
+		/// <param name="langID">Sprach Key</param>
+		/// <returns></returns>
+		private async Task AddResourceDictionaryFileToLangData(ResourceDictionaryFile rdf, string langID)
+		{
+			string fileName = System.IO.Path.GetFileName(rdf.FileName);
 
-                if (string.IsNullOrWhiteSpace(langID))
-                    return;
-            }
+			while (true)
+			{
+				if (string.IsNullOrWhiteSpace(langID))
+				{
+					// Jeśli klucz jest pusty, poproś użytkownika o podanie klucza
+					langID = await DialogCoordinator.ShowInputAsync(
+	                    this,
+	                    App.FindString("error"),
+	                    string.Format(App.FindString("errorNoLangKey"), fileName)
+                    );
+					if (string.IsNullOrWhiteSpace(langID))
+						return;
+					continue;
+				}
 
-            for (int i = rdf.Entrys.Count - 1; i >= 0; i--)
-            {
-                if (rdf.Entrys[i] is DictionaryStringEntry entry)
-                {
-                    LangData.AddSetValue(langID, entry.Key, entry.Value);
+				bool exists = LangData.ContainsLanguage(langID);
+				if (!exists)
+					break;
 
-                    rdf.Entrys.RemoveAt(i);
-                }
-            }
+				// Jeśli język już istnieje, wyświetl szczegółowy komunikat
+				langID = await DialogCoordinator.ShowInputAsync(
+	                this,
+	                App.FindString("error"),
+	                string.Format(App.FindString("errorLangExists"), langID, fileName)
+                );
+				if (string.IsNullOrWhiteSpace(langID))
+					return;
+			}
 
-            Language lang = LangData.GetLangByID(langID);
+			for (int i = rdf.Entrys.Count - 1; i >= 0; i--)
+			{
+				if (rdf.Entrys[i] is DictionaryStringEntry entry)
+				{
+					LangData.AddSetValue(langID, entry.Key, entry.Value);
+					rdf.Entrys.RemoveAt(i);
+				}
+			}
 
-            if (lang == null)
-                lang = LangData.AddLanguage(langID);
+			Language lang = LangData.GetLangByID(langID);
+			if (lang == null)
+				lang = LangData.AddLanguage(langID);
 
-            rdf.RemoveAllStringRessoueces();
+			rdf.RemoveAllStringRessoueces();
+			FileList.Add(lang, rdf);
+		}
 
-            FileList.Add(lang, rdf);
-        }
-
-        /// <summary>
-        /// Prüft, ob eine Datei in der Dateiliste vorhanden ist
-        /// </summary>
-        /// <param name="filename">Dateiname</param>
-        /// <returns></returns>
-        private bool FileListContainsFile(string filename)
+		/// <summary>
+		/// Prüft, ob eine Datei in der Dateiliste vorhanden ist
+		/// </summary>
+		/// <param name="filename">Dateiname</param>
+		/// <returns></returns>
+		private bool FileListContainsFile(string filename)
         {
             return FileList.Contains(kvp => kvp.Value.FileName == filename);
         }
@@ -417,5 +438,6 @@ namespace de.LandauSoftware.WPFTranslate
         {
             LanguageCollectionChangedEvent?.Invoke(this, EventArgs.Empty);
         }
-    }
+
+	}
 }
